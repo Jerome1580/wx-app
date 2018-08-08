@@ -1,15 +1,13 @@
 <script>
-  import { get } from "./util";
+  import { get } from './util'
 
-
-  export default {
-    async created() {
-
+export default {
+    async created () {
       // const res = await get("/weapp/demo");
       // console.log(123,res);
-      console.log("小程序启动了");
-    }
-  };
+      console.log('小程序启动了')
+  }
+  }
 </script>
 
 <style>
