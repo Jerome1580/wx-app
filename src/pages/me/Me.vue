@@ -5,7 +5,7 @@
         <img :src="userinfo.avatarUrl" alt="">
         <p>{{ userinfo.nickName}}</p>
         <YearProgress></YearProgress>
-        <button class="btn">添加图书</button>
+        <button @click="scanBook" class="btn">添加图书</button>
       </div>
     </div>
 </template>
@@ -14,8 +14,13 @@
   import { showSuccess } from '../../util'
   import qcloud from 'wafer2-client-sdk'
   import config from '@/config'
+
+  import YearProgress from '@/components/YearProgress';
   export default {
     name: "Me",
+    components:{
+      YearProgress
+    },
     data(){
       return {
         userinfo:{}
@@ -32,6 +37,14 @@
       }
     },
     methods: {
+      // 扫码功能
+      scanBook(){
+        wx.scanCode({
+          success: (res) => {
+            console.log(res)
+          }
+        })
+      },
       getSetting(){
         wx.getSetting({
           success: function(res){
