@@ -7,6 +7,7 @@ module.exports = async (ctx)=>{
   const books = await mysql('books')
                   .select('*')
                   .limit(size)
+                  .offset(Number(page) * size)
                   .orderBy('books.id','desc')
     // .orderBy('id','desc')
   ctx.state.data = {
